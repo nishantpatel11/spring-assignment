@@ -1,0 +1,56 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="addressService"
+		class="com.nishu.bank.service.impl.AddressServiceImpl">
+	</bean>
+
+
+	<bean id="address"
+		class="com.nishu.bank.model.Address">
+		 <property name = "street" value = " 24th Main, 6th Cross "/>
+		 <property name = "city" value = " Bangalore "/>
+		 <property name = "state" value = " Karnataka "/>
+		 <property name = "zip" value = " 560068 "/>
+		 <property name = "country" value = " India "/>
+		 
+	</bean>
+
+
+	<bean id="question"
+		class="com.spring.core.beans.Question">      
+		
+		 <property name = "questionId" value = "1432"/>
+		 <property name = "question" value = " Place "/>
+		
+      <property name = "answerList">
+         <list>
+            <value> Name</value>
+            <value> Birthday</value>
+            <value>Varanasi</value>
+            <value>Varanasi</value>
+         </list>
+      </property>
+
+      <property name = "answerSet">
+         <set>
+		 	<value> Name</value>
+            <value> Birthday</value>
+            <value>Varanasi</value>
+            <value>Varanasi</value>
+         </set>
+      </property>
+
+      <property name = "answerMap">
+         <map>
+            <entry key = "1" value = "Name"/>
+            <entry key = "2" value = "Birthday"/>
+            <entry key = "3" value = "Varanasi"/>
+            <entry key = "4" value = "Varanasi"/>
+         </map>
+      </property>
+</bean>
+
+</beans>
