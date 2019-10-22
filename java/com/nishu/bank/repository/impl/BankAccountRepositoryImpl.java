@@ -1,7 +1,10 @@
 package com.nishu.bank.repository.impl;
 
+import org.springframework.stereotype.Repository;
+
 import com.nishu.bank.repository.BankAccountRepository;
 
+@Repository
 public class BankAccountRepositoryImpl implements BankAccountRepository{
 
 	@Override

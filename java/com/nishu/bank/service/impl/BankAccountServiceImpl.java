@@ -1,7 +1,10 @@
 package com.nishu.bank.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.nishu.bank.service.BankAccountService;
 
+@Service
 public class BankAccountServiceImpl implements BankAccountService{
 
 	@Override
@@ -16,7 +19,7 @@ public class BankAccountServiceImpl implements BankAccountService{
 
 	@Override
 	public double getBalance(long accountId) {
-		return 0;
+		return 5.7;
 	}
 
 	@Override
