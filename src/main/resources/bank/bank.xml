@@ -1,3 +1,4 @@
+
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
@@ -8,6 +9,11 @@
 
 	<bean id="bankAccountService"
 		class="com.nishu.bank.service.impl.BankAccountServiceImpl"
+		scope="singleton">
+	</bean>
+	
+	<bean id="BankAccountRepository"
+		class="com.nishu.bank.repository.impl.BankAccountRepositoryImpl"
 		scope="singleton">
 	</bean>
 

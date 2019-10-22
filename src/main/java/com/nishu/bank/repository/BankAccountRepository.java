@@ -9,4 +9,5 @@ public interface BankAccountRepository {
 	public Boolean getUpdate(Long accountId, double newBalance);
 	public double withdraw(Long accountId, double balance);
 	
+	BankAccount getBankAccount(Long accountId);
 }

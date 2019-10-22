@@ -1,18 +1,16 @@
 package com.nishu.bank.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
+import com.nishu.bank.model.Address;
 import com.nishu.bank.model.BankAccount;
 import com.nishu.bank.repository.BankAccountRepository;
 import com.nishu.bank.service.BankAccountService;
 
 @Service
 public class BankAccountServiceImpl implements BankAccountService{
-
-
-//	@Autowired
-	private BankAccount bankAccount;
 
 	@Autowired
 	private BankAccountRepository bankAccountRepository;
@@ -45,7 +43,7 @@ public class BankAccountServiceImpl implements BankAccountService{
 
 	@Override
 	public BankAccount getBankAccount() {
-		return bankAccount;
+		return (BankAccount) new ClassPathXmlApplicationContext("beans.xml").getBean("bankAccount");
 	}
 
 	@Override

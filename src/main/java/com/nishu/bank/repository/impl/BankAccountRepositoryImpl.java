@@ -59,4 +59,11 @@ public class BankAccountRepositoryImpl implements BankAccountRepository{
 		return 0;
 	}
 
+	@Override
+	public BankAccount getBankAccount(Long accountId) {
+		if(bankAccountMap.containsKey(accountId))
+			return bankAccountMap.get(accountId);
+		return null;
+	}
+
 }
