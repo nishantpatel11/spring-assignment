@@ -24,18 +24,18 @@ public class BankAccountController {
 
 	@GetMapping("/")
 	public ResponseEntity getBankAccount() {
-		return ResponseEntity.status(HttpStatus.OK).body(bankAccountService.getBankAccount());
+		return ResponseEntity.status(HttpStatus.OK).body(bankAccountService.getBankAccount()+"");
 	}
 	
 	@GetMapping("/{accountId}")
 	public ResponseEntity getBalance(@PathVariable (name = "accountId") Long accountId ) {
-		return ResponseEntity.status(HttpStatus.OK).body(bankAccountService.getBalance(accountId));
+		return ResponseEntity.status(HttpStatus.OK).body(bankAccountService.getBalance(accountId)+"");
 	}
 	
 	
 	@GetMapping("/{accountId}/{balance}")
 	public ResponseEntity deposit(@PathVariable (name = "accountId") Long accountId ,@PathVariable (name = "balance") Long balance ) {
-		return ResponseEntity.status(HttpStatus.OK).body(bankAccountService.deposit(accountId, balance));
+		return ResponseEntity.status(HttpStatus.OK).body(bankAccountService.deposit(accountId, balance)+"");
 	}
 	
 	@PostMapping("/")
@@ -43,7 +43,7 @@ public class BankAccountController {
 		
 		long accountId = params!=null ? params.containsKey("accountId") ? (Long) params.get("accountId") : 0 : 0;
 		double balance = params!=null ? params.containsKey("balance") ? (Long) params.get("balance") : 0 : 0;
-		return ResponseEntity.status(HttpStatus.OK).body(bankAccountService.withdraw(accountId, balance));
+		return ResponseEntity.status(HttpStatus.OK).body(bankAccountService.withdraw(accountId, balance)+"");
 	}
 	
 	@PostMapping("/fund-transfer")
@@ -53,7 +53,7 @@ public class BankAccountController {
 		long fromAccount = params!=null ? params.containsKey("fromAccount") ? (Long) params.get("fromAccount") : 0 : 0;
 		long toAccount = params!=null ? params.containsKey("toAccount") ? (Long) params.get("toAccount") : 0 : 0;
 		double balance = params!=null ? params.containsKey("balance") ? (Long) params.get("balance") : 0 : 0;
-		return ResponseEntity.status(HttpStatus.OK).body(bankAccountService.fundTransfer(fromAccount, toAccount, balance));
+		return ResponseEntity.status(HttpStatus.OK).body(bankAccountService.fundTransfer(fromAccount, toAccount, balance)+"");
 	}
 	
 }

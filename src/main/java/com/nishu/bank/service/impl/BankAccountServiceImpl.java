@@ -11,7 +11,7 @@ import com.nishu.bank.service.BankAccountService;
 public class BankAccountServiceImpl implements BankAccountService{
 
 
-	@Autowired
+//	@Autowired
 	private BankAccount bankAccount;
 
 	@Autowired
