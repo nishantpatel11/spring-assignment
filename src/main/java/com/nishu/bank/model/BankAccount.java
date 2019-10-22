@@ -11,7 +11,7 @@ public class BankAccount implements Serializable{
 	private Long accountId;
 	private String accountHolderName;
 	private String accountType;
-	private Double accountBalance;
+	private Double accountBalance=0.0;
 
 	public BankAccount() {
 		super();
