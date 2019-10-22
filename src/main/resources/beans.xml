@@ -12,6 +12,9 @@
 	<import resource="customer/customer.xml"/>
 	<import resource="address/address.xml"/>
 	<import resource="bank/bank.xml"/>
+	<import resource="question/question.xml"/>
+	<import resource="demobean/demobean.xml"/>
+	<import resource="employee/employee.xml" />
 	
 	
 </beans>

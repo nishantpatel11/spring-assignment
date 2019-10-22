@@ -10,6 +10,7 @@ import com.nishu.bank.model.Question;
 import com.nishu.bank.service.AddressService;
 import com.nishu.bank.service.BankAccountService;
 import com.nishu.bank.service.CustomerService;
+import com.nishu.service.impl.EmployeeServiceImpl;
 
 
 public class Application {
@@ -18,7 +19,7 @@ public class Application {
 	public static void main(String[] args) {
 
 
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 				
 
 			CustomerService customerService = context.getBean(CustomerService.class);
@@ -37,6 +38,19 @@ public class Application {
 			BankAccountService bankAccountService = context.getBean(BankAccountService.class);
 			BankAccount bankAccount = bankAccountService.getBankAccount();
 			System.out.println(bankAccount);
+
+			
+			System.out.println("Spring Context initialized");
+			
+			EmployeeServiceImpl employeeService = context.getBean("employeeService",EmployeeServiceImpl.class);
+
+			System.out.println("Bean retrieved from Spring Context");
+			
+			System.out.println("Employee Name="+employeeService.getEmployee().getName());
+			
+			context.close();;
+			System.out.println("Spring Context Closed");
+		
 			
 	}
 }

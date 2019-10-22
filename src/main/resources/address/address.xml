@@ -21,40 +21,4 @@
 		 <property name = "country" value = " India "/>
 		 
 	</bean>
-
-
-	<bean id="question"
-		class="com.nishu.bank.model.Question">      
-		
-		 <property name = "questionId" value = "1432"/>
-		 <property name = "question" value = " Place "/>
-		
-      <property name = "answerList">
-         <list>
-            <value> Name</value>
-            <value> Birthday</value>
-            <value>Varanasi</value>
-            <value>Varanasi</value>
-         </list>
-      </property>
-
-      <property name = "answerSet">
-         <set>
-		 	<value> Name</value>
-            <value> Birthday</value>
-            <value>Varanasi</value>
-            <value>Varanasi</value>
-         </set>
-      </property>
-
-      <property name = "answerMap">
-         <map>
-            <entry key = "1" value = "Name"/>
-            <entry key = "2" value = "Birthday"/>
-            <entry key = "3" value = "Varanasi"/>
-            <entry key = "4" value = "Varanasi"/>
-         </map>
-      </property>
-</bean>
-
 </beans>
