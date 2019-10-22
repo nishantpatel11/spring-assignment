@@ -4,9 +4,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.nishu.bank.model.Address;
+import com.nishu.bank.model.BankAccount;
 import com.nishu.bank.model.Customer;
 import com.nishu.bank.model.Question;
 import com.nishu.bank.service.AddressService;
+import com.nishu.bank.service.BankAccountService;
 import com.nishu.bank.service.CustomerService;
 
 
@@ -16,7 +18,7 @@ public class Application {
 	public static void main(String[] args) {
 
 
-		ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Module.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 				
 
 			CustomerService customerService = context.getBean(CustomerService.class);
@@ -31,6 +33,10 @@ public class Application {
 			
 			Question question = (Question) context.getBean("question");
 			System.out.println(question);
+
+			BankAccountService bankAccountService = context.getBean(BankAccountService.class);
+			BankAccount bankAccount = bankAccountService.getBankAccount();
+			System.out.println(bankAccount);
 			
 	}
 }

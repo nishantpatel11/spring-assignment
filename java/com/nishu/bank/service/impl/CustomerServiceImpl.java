@@ -10,7 +10,7 @@ public class CustomerServiceImpl implements CustomerService{
 
 	@Override
 	public Customer create() {
-		return (Customer) new ClassPathXmlApplicationContext("Spring-Module.xml").getBean("customer");
+		return (Customer) new ClassPathXmlApplicationContext("beans.xml").getBean("customer");
 	}
 
 }

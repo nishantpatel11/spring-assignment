@@ -9,7 +9,7 @@ public class AddressServiceImpl implements AddressService {
 
 	@Override
 	public Address create() {
-		return (Address) new ClassPathXmlApplicationContext("Spring-Module.xml").getBean("address");
+		return (Address) new ClassPathXmlApplicationContext("beans.xml").getBean("address");
 	}
 
 }
