@@ -10,12 +10,12 @@
 	<bean name="employee" class="com.nishu.bank.model.Employee" />
 
 	<bean name="employeeService"
-		class="com.com.nishu.service.impl.EmployeeServiceImpl">
+		class="com.nishu.service.impl.EmployeeServiceImpl">
 		<property name="employee" ref="employee"></property>
 	</bean>
 
 	<bean name="myEmployeeService"
-		class="com.com.nishu.service.impl.MyEmployeeService"
+		class="com.nishu.service.impl.MyEmployeeService"
 		init-method="init" destroy-method="destroy">
 		<property name="employee" ref="employee"></property>
 	</bean>
@@ -24,5 +24,5 @@
 	<bean
 		class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
 	<bean name="myService"
-		class="com.com.nishu.service.impl.MyService" />
+		class="com.nishu.service.impl.MyService" />
 </beans>
