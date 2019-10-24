@@ -1,20 +1,41 @@
-<beans xmlns = "http://www.springframework.org/schema/beans"
-   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-   xmlns:context = "http://www.springframework.org/schema/context"
-   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-   <context:annotation-config/>
-   
+	<context:annotation-config />
+
 	<!-- <import resource="database/Spring-Datasource.xml"/> -->
-	<import resource="customer/customer.xml"/>
-	<import resource="address/address.xml"/>
-	<import resource="bank/bank.xml"/>
-	<import resource="question/question.xml"/>
-	<import resource="demobean/demobean.xml"/>
+	<import resource="customer/customer.xml" />
+	<import resource="address/address.xml" />
+	<import resource="bank/bank.xml" />
+	<import resource="question/question.xml" />
+	<import resource="demobean/demobean.xml" />
 	<import resource="employee/employee.xml" />
-	
-	
+
+	<bean autowire="byName"
+		class="com.nishu.contextware.bean.Triangle"
+		id="triangle"></bean>
+
+	<bean class="com.nishu.contextware.bean.Point"
+		id="pointA">
+		<property name="x" value="0"></property>
+		<property name="y" value="0"></property>
+	</bean>
+
+	<bean class="com.nishu.contextware.bean.Point"
+		id="pointB">
+		<property name="x" value="-20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+
+	<bean class="com.nishu.contextware.bean.Point"
+		id="pointC">
+		<property name="x" value="20"></property>
+		<property name="y" value="0"></property>
+	</bean>
+
 </beans>
