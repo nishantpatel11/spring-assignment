@@ -46,6 +46,7 @@ public class BankAccountTest {
 		BankAccount bankAccount = context.getBean(BankAccount.class);
 		assertNotNull(bankAccount);
 
+		
 	}
 
 	

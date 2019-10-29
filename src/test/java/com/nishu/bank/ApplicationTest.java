@@ -1,11 +1,11 @@
 package com.nishu.bank;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -21,17 +21,37 @@ public class ApplicationTest {
 
 	@Before
 	public void setUp() throws Exception {
+	
 		context = new ClassPathXmlApplicationContext("beans.xml");
-
 	}
 
 	@After
-	public void tearDown() throws Exception {
+	public  void tearDown() throws Exception {
 		context.close();
+		assertArrayEquals("hello", new long[] {1l,2l,3l,4l}, new long[] {1l,2l,3l,4l});
 	}
+	
+//	@AfterClass
+//	public  void tearDown() throws Exception {
+//		context.close();
+//	}
 
 	
 	@Test
+	public void test() {
+		
+		assertArrayEquals("hello", new long[] {1l,2l,3l,4l}, new long[] {1l,2l,3l,4l});
+	}
+	
+//	@BeforeClass
+//	public static  void setup() {
+//		context = new ClassPathXmlApplicationContext("beans.xml");
+//
+//	}
+	
+	
+	@Test
+	@Ignore
 	public void Test() {
 
 
@@ -42,15 +62,21 @@ public class ApplicationTest {
 
 
 	@Test
+	@Ignore
 	public void addressTest() {
 		AddressService addressService = context.getBean(AddressService.class);
 		Address address = addressService.create();
 		assertNotNull(address);
 	}
 
-	@Test	
+	@Test
+	@Ignore
 	public void questionTest() {
 		Question question = (Question) context.getBean("question");
 		assertNotNull(question);
+		System.out.println("Question :"+question.getQuestion());
+		System.out.println("Answer List :"+question.getAnswerList());
+		System.out.println("Answer Map :"+question.getAnswerMap());
+		System.out.println("Answer Set :"+question.getAnswerSet());
 	}
 }
