@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 public class Address implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5571375872959184091L;
 	private String street;
 	private String city;
