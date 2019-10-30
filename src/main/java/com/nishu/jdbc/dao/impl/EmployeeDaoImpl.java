@@ -60,10 +60,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Employee> select(Integer empId, String name) {
+	public Employee select(Integer empId, String name) {
 
 		JdbcTemplate select = new JdbcTemplate(dataSource);
-		return select
+		return (Employee) select
 				.query(
 						"select  emp_id, name from employee where emp_id = ? AND name= ?",
 						new Object[] {empId, name },

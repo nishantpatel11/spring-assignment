@@ -27,14 +27,14 @@ public class JDBCTemplateTest {
 //		employeeDAO.createEmployee(emp);
 
 		//Read
-		Employee emp1 = employeeDAO.getById(336);
+		Employee emp1 = employeeDAO.getById(269);
 		System.out.println("Employee Retrieved::"+emp1);
 
 //		//Update
 		emp.setEmpId(336);
 		emp.setSalary(4500.0);
 		emp.setEmpName("Nitish");
-		employeeDAO.update(emp);
+//		employeeDAO.update(emp);
 
 		//Get All
 		List<Employee> empList = employeeDAO.getEmployeeAll();

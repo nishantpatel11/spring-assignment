@@ -18,7 +18,7 @@ public interface EmployeeDao {
 	
 	public Integer deleteById(int id);
 	
-	public List<Employee> select(Integer empId, String name);
+	public Employee select(Integer empId, String name);
 
 	public List<Employee> getEmployeeAll();
 

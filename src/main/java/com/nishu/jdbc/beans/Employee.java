@@ -16,11 +16,10 @@ public class Employee implements Serializable {
 
 	private Integer empId;
 	private String empName;
-	private LocalDateTime empHireDate;
 	private String empJobId;
 	private Double salary;
+	private LocalDateTime empHireDate;	
 	private Department dept;
-	
 	/**
 	 * 
 	 */
@@ -29,24 +28,28 @@ public class Employee implements Serializable {
 	}
 
 	
+
+
 	/**
 	 * @param empId
 	 * @param empName
-	 * @param empHireDate
 	 * @param empJobId
 	 * @param salary
+	 * @param empHireDate
 	 * @param dept
 	 */
-	public Employee(Integer empId, String empName, LocalDateTime empHireDate, String empJobId, Double salary,
+	public Employee(Integer empId, String empName, String empJobId, Double salary, LocalDateTime empHireDate,
 			Department dept) {
 		super();
 		this.empId = empId;
 		this.empName = empName;
-		this.empHireDate = empHireDate;
 		this.empJobId = empJobId;
 		this.salary = salary;
+		this.empHireDate = empHireDate;
 		this.dept = dept;
 	}
+
+
 
 
 	/**
