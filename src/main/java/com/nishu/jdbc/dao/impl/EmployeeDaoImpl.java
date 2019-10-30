@@ -29,7 +29,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 
 	@Override
-	public void createEmployee(Employee employee) {
+	public Integer createEmployee(Employee employee) {
 
 		String query = "insert into employee (emp_id, name) values (?,?)";
 		Connection con = null;
@@ -43,6 +43,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			int out = ps.executeUpdate();
 			if(out !=0){
 				System.out.println("Employee saved with id="+employee.getEmpId());
+				return out;
 			}else System.out.println("Employee save failed with id="+employee.getEmpName());
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -54,7 +55,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				e.printStackTrace();
 			}
 		}
-
+		return null;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -78,11 +79,12 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	@Override
-	public void delete(Integer empId, String name) {
+	public Integer delete(Integer empId, String name) {
 
 		JdbcTemplate delete = new JdbcTemplate(dataSource);
 		int rowId = delete.update("DELETE from employee where emp_id = ? AND name = ?",
 				new Object[] { empId, name });
+		return rowId;
 	}
 
 	@Override
@@ -123,7 +125,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	@Override
-	public void update(Employee employee) {
+	public Integer update(Employee employee) {
 
 		String query = "update employee set name=? where emp_id=?";
 		Connection con = null;
@@ -133,9 +135,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			ps = con.prepareStatement(query);
 			ps.setString(1, employee.getEmpName());
 			ps.setInt(2, employee.getEmpId());
-			int out = ps.executeUpdate();
+			Integer out = ps.executeUpdate();
 			if(out !=0){
 				System.out.println("Employee updated with id="+employee.getEmpId());
+				return out;
 			}else 
 				System.out.println("No Employee found with id="+employee.getEmpId());
 		}catch(SQLException e){
@@ -148,10 +151,11 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				e.printStackTrace();
 			}
 		}
+		return null;
 	}
 
 	@Override
-	public void deleteById(int id) {
+	public Integer deleteById(int id) {
 		String query = "delete from employee where emp_id=?";
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -162,7 +166,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 			int out = ps.executeUpdate();
 			if(out !=0){
 				System.out.println("Employee deleted with id="+id);
-			}else System.out.println("No Employee found with id="+id);
+				return out;
+			}else 
+				System.out.println("No Employee found with id="+id);
+	
 		}catch(SQLException e){
 			e.printStackTrace();
 		}finally{
@@ -173,6 +180,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 				e.printStackTrace();
 			}
 		}
+		return null;
 	}
 
 	@Override

@@ -10,13 +10,13 @@ public interface EmployeeDao {
 
 	public void setDataSource(DataSource ds);
 
-	public void createEmployee(Employee employee);
+	public Integer createEmployee(Employee employee);
 
 	public Employee getById(int id);
 	
-	public void update(Employee employee);
+	public Integer update(Employee employee);
 	
-	public void deleteById(int id);
+	public Integer deleteById(int id);
 	
 	public List<Employee> select(Integer empId, String name);
 
@@ -24,6 +24,6 @@ public interface EmployeeDao {
 
 	public void deleteAll();
 
-	public void delete(Integer empId, String name);
+	public Integer delete(Integer empId, String name);
 	
 }
