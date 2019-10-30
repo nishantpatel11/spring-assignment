@@ -22,7 +22,7 @@ public interface EmployeeDao {
 
 	public List<Employee> getEmployeeAll();
 
-	public void deleteAll();
+	public Integer deleteAll();
 
 	public Integer delete(Integer empId, String name);
 	

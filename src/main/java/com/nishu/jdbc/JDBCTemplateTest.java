@@ -24,24 +24,25 @@ public class JDBCTemplateTest {
 		emp.setEmpName("Nishant");
 
 		//Create
-//		employeeDAO.createEmployee(emp);
+		employeeDAO.createEmployee(emp);
 
 		//Read
-		Employee emp1 = employeeDAO.getById(269);
+		Employee emp1 = employeeDAO.getById(rand);
 		System.out.println("Employee Retrieved::"+emp1);
 
 //		//Update
 		emp.setEmpId(336);
 		emp.setSalary(4500.0);
 		emp.setEmpName("Nitish");
-//		employeeDAO.update(emp);
+		System.out.println("Record update of "+employeeDAO.update(emp)+" this id");
 
 		//Get All
 		List<Employee> empList = employeeDAO.getEmployeeAll();
 		System.out.println(empList);
 //
 //		//Delete
-//		employeeDAO.deleteById(rand);
+		employeeDAO.deleteById(rand);
+		System.out.println("Number of record is deleted is"+employeeDAO.deleteAll());
 
 		//Close Spring Context
 		ctx.close();

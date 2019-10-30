@@ -175,15 +175,29 @@ public class EmployeeDAOJDBCTemplateImpl implements EmployeeDao {
 	}
 
 	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
+	public Integer deleteAll() {
 
+		String query = "delete from employee";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		Integer result = jdbcTemplate.update(query);
+		return result;
 	}
 
 	@Override
 	public Integer delete(Integer empId, String name) {
-		// TODO Auto-generated method stub
-		return null;
+
+		String query = "delete from employee where emp_id=?";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+
+		Object[] args = new Object[] { empId, name};
+		int out = jdbcTemplate.update(query, args);
+		if(out !=0){
+			System.out.println("Employee deleted with id="+out);
+			return out;
+		}else 
+			System.out.println("No Employee found with id="+out);
+
+		return out;
 	}
 
 }

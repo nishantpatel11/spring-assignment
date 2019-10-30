@@ -71,10 +71,10 @@ public class EmployeeDaoImpl implements EmployeeDao{
 	}
 
 	@Override
-	public void deleteAll() {
+	public Integer deleteAll() {
 
 		JdbcTemplate delete = new JdbcTemplate(dataSource);
-		delete.update("DELETE from employee");
+		return delete.update("DELETE from employee");
 
 	}
 
