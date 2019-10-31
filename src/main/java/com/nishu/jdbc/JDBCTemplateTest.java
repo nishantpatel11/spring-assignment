@@ -6,7 +6,7 @@ import java.util.Random;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.nishu.jdbc.beans.Employee;
-import com.nishu.jdbc.dao.EmployeeDao;
+import com.nishu.jdbc.service.EmployeeService;
 
 public class JDBCTemplateTest {
 
@@ -15,7 +15,7 @@ public class JDBCTemplateTest {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("spring-bean.xml");
 
 		//Get the EmployeeDAO Bean
-		EmployeeDao employeeDAO = ctx.getBean("employeeDAO", EmployeeDao.class);
+		EmployeeService employeeDAO = ctx.getBean("employeeService", EmployeeService.class);
 
 		//Run some tests for JDBC CRUD operations
 		Employee emp = new Employee();

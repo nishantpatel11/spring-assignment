@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-public class EmployeeRowMapper implements RowMapper {
+public class EmployeeRowMapper<T> implements RowMapper {
 
 	@Override
 	public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -13,5 +13,4 @@ public class EmployeeRowMapper implements RowMapper {
 		EmployeeResultSetExtractor extractor = new EmployeeResultSetExtractor();
 		return extractor.extractData(rs);
 	}
-
 }

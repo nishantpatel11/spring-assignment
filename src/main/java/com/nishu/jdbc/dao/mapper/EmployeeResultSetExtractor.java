@@ -9,19 +9,18 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import com.nishu.jdbc.beans.Department;
 import com.nishu.jdbc.beans.Employee;
 
-public class EmployeeResultSetExtractor implements ResultSetExtractor{
+public class EmployeeResultSetExtractor implements ResultSetExtractor {
 
 	@Override
 	public Employee extractData(ResultSet rs) throws SQLException, DataAccessException {
 
 		Employee employee = new Employee();
-		employee.setEmpId(rs.getFetchSize()>0 ? rs.getInt(1):null);
-		employee.setEmpName(rs.getFetchSize()>1 ? rs.getString(2):null);
-		employee.setEmpJobId(rs.getFetchSize()>2 ? rs.getString(3):null);
-		employee.setSalary(rs.getFetchSize()>3 ? rs.getDouble(4):null);
-		employee.setEmpHireDate(rs.getFetchSize()>4 ? rs.getTimestamp(5)!=null ? rs.getTimestamp(5).toLocalDateTime():null:null);
-		employee.setDept(rs.getFetchSize()>5 ? (Department) rs.getObject(6):null);
-		
+		employee.setEmpId( rs.getInt(1));
+		employee.setEmpName( rs.getString(2));
+		employee.setEmpJobId( rs.getString(3));
+		employee.setSalary(rs.getDouble(4));
+		employee.setEmpHireDate(rs.getTimestamp(5).toLocalDateTime());
+		employee.setDept(new Department(rs.getInt(6),rs.getString(7),rs.getInt(8)));
 		return employee;
 	}
 

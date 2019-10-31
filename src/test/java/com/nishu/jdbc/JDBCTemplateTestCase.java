@@ -12,12 +12,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.nishu.jdbc.beans.Employee;
 import com.nishu.jdbc.dao.EmployeeDao;
+import com.nishu.jdbc.service.EmployeeService;
 
 public class JDBCTemplateTestCase {
 
 
 	ClassPathXmlApplicationContext context = null;
-	EmployeeDao employeeDAO = null;
+	EmployeeService employeeService = null;
 	static int empId = new Random().nextInt(1000);
 
 	@Before
@@ -26,8 +27,8 @@ public class JDBCTemplateTestCase {
 
 		context = new ClassPathXmlApplicationContext("spring-bean.xml");
 		assertNotNull(context);
-		employeeDAO = context.getBean("employeeDAO", EmployeeDao.class);
-		assertNotNull(employeeDAO);
+		employeeService = context.getBean("employeeService", EmployeeService.class);
+		assertNotNull(employeeService);
 
 	}
 
@@ -35,8 +36,8 @@ public class JDBCTemplateTestCase {
 	@Test
 	public void tearDown() throws Exception {
 
-		employeeDAO=null;
-		assertNull(employeeDAO);
+		employeeService=null;
+		assertNull(employeeService);
 		context.close();
 	}
 
@@ -48,7 +49,7 @@ public class JDBCTemplateTestCase {
 		emp.setEmpId(empId);
 		emp.setEmpName("Nishant");
 
-		Integer employeeId = employeeDAO.createEmployee(emp);
+		Integer employeeId = employeeService.createEmployee(emp);
 		assertNotNull(employeeId);
 	}
 
@@ -57,7 +58,7 @@ public class JDBCTemplateTestCase {
 	@Test
 	public void getInfoByEmpIdTest() {
 
-		Employee emp1 = employeeDAO.getById(336);
+		Employee emp1 = employeeService.getById(336);
 		System.out.println("Employee Retrieved::"+emp1);
 
 	}
@@ -65,18 +66,18 @@ public class JDBCTemplateTestCase {
 	@Test
 	public void updateEmpoyeeTest() {
 
-		Employee emp = employeeDAO.getById(336);
+		Employee emp = employeeService.getById(336);
 		emp.setEmpId(336);
 		emp.setSalary(4500.0);
 		emp.setEmpName("Nitish");
-		Integer employeeId = employeeDAO.update(emp);
+		Integer employeeId = employeeService.update(emp);
 		assertNotNull(employeeId);
 	}
 
 	@Test
 	public void deleteEmployeeByIdTest() {
 
-		Integer employeeId = employeeDAO.deleteById(373);
+		Integer employeeId = employeeService.deleteById(373);
 		assertNotNull(employeeId);
 	}
 
