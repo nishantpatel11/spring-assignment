@@ -215,4 +215,52 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return empList;
 	}
 
+
+
+	@Override
+	public List<Employee> getEmployeeDetailsByEmpId(Integer empId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public List<Employee> getEmployeeDetailsByDeptId(Integer deptId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public List<Employee> getEmployeeMaxSalary() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public List<Employee> getEmployeeMaxSalaryByDeptId(Integer deptId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public List<Employee> getEmployeeDepartment() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public List<Employee> getAllEmployeeByDeptId(Integer deptId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

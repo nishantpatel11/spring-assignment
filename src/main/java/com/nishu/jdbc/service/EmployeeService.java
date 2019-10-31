@@ -26,5 +26,16 @@ public interface EmployeeService {
 
 	public Integer delete(Integer empId, String name);
 
+	public List<Employee> getEmployeeDetailsByEmpId(Integer empId);
+	
+	public List<Employee> getEmployeeDetailsByDeptId(Integer deptId);
 
+	public List<Employee> getEmployeeMaxSalary();
+	
+	public List<Employee> getEmployeeMaxSalaryByDeptId(Integer deptId);
+	
+	public List<Employee> getEmployeeDepartment();
+	
+	public List<Employee> getAllEmployeeByDeptId(Integer deptId);
+		
 }

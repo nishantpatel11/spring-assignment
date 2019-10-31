@@ -15,7 +15,7 @@ public class JDBCTemplateTest {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("spring-bean.xml");
 
 		//Get the EmployeeDAO Bean
-		EmployeeService employeeDAO = ctx.getBean("employeeService", EmployeeService.class);
+		EmployeeService employeeService = ctx.getBean("employeeService", EmployeeService.class);
 
 		//Run some tests for JDBC CRUD operations
 		Employee emp = new Employee();
@@ -24,27 +24,45 @@ public class JDBCTemplateTest {
 		emp.setEmpName("Nishant");
 
 		//Create
-		employeeDAO.createEmployee(emp);
+		employeeService.createEmployee(emp);
 
 		//Read
-		Employee emp1 = employeeDAO.getById(rand);
+		Employee emp1 = employeeService.getById(rand);
 		System.out.println("Employee Retrieved::"+emp1);
 
 //		//Update
 		emp.setEmpId(336);
 		emp.setSalary(4500.0);
 		emp.setEmpName("Nitish");
-		System.out.println("Record update of "+employeeDAO.update(emp)+" this id");
+		System.out.println("Record update of "+employeeService.update(emp)+" this id");
 
 		//Get All
-		List<Employee> empList = employeeDAO.getEmployeeAll();
+		List<Employee> empList = employeeService.getEmployeeAll();
 		System.out.println(empList);
 //
 //		//Delete
-		employeeDAO.deleteById(rand);
-		System.out.println("Number of record is deleted is"+employeeDAO.deleteAll());
+		employeeService.deleteById(rand);
+		System.out.println("Number of record is deleted is"+employeeService.deleteAll());
 
-		//Close Spring Context
+		
+		
+//		Employee detail by department id
+		System.out.println("Employee Details :"+employeeService.getAllEmployeeByDeptId(12));
+
+//		Employee Max Salary
+		System.out.println("Employee Details :"+employeeService.getEmployeeMaxSalary());
+		
+//		Employee detail by emp id		
+		System.out.println("Employee Details :"+employeeService.getEmployeeDetailsByEmpId(123));
+		
+//		Employee detail by department id
+		System.out.println("Employee Details :"+employeeService.getEmployeeDetailsByDeptId(12));
+		
+//		Employee and Department details
+		System.out.println("Employee Details :"+employeeService.getEmployeeDepartment());
+		
+		
+// 		Close Spring Context
 		ctx.close();
 
 		System.out.println("DONE");

@@ -216,6 +216,7 @@ public class EmployeeJDBCTemplateServiceImpl implements EmployeeService{
 
 
 
+	@Override
 	public List<Employee> getAllEmployeeByDeptId(Integer deptId) {
 		String query = "select "
 				+ "emp_id, "
@@ -258,6 +259,7 @@ public class EmployeeJDBCTemplateServiceImpl implements EmployeeService{
 	
 	
 
+	@Override
 	public List<Employee> getEmployeeDepartment(){
 		
 
@@ -285,6 +287,7 @@ public class EmployeeJDBCTemplateServiceImpl implements EmployeeService{
 	}
 	
 	
+	@Override
 	public List<Employee> getEmployeeMaxSalaryByDeptId(Integer deptId){
 		
 
@@ -306,6 +309,7 @@ public class EmployeeJDBCTemplateServiceImpl implements EmployeeService{
 	}
 	
 	
+	@Override
 	public List<Employee> getEmployeeMaxSalary(){
 		
 
@@ -327,7 +331,7 @@ public class EmployeeJDBCTemplateServiceImpl implements EmployeeService{
 		return empList;
 	}
 	
-	
+	@Override	
 	public List<Employee> getEmployeeDetailsByDeptId(Integer deptId){
 		
 
@@ -351,7 +355,7 @@ public class EmployeeJDBCTemplateServiceImpl implements EmployeeService{
 	}
 
 	
-	
+	@Override
 	public List<Employee> getEmployeeDetailsByEmpId(Integer empId){
 		
 
