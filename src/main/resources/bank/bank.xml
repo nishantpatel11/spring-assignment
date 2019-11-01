@@ -1,29 +1,20 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-   http://www.springframework.org/schema/context
-   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
-	<bean id="bankAccountService"
-		class="com.nishu.bank.service.impl.BankAccountServiceImpl"
-		scope="singleton">
-	</bean>
-	
-	<bean id="BankAccountRepository"
-		class="com.nishu.bank.repository.impl.BankAccountRepositoryImpl"
-		scope="singleton">
-	</bean>
+	<aop:aspectj-autoproxy />
 
 
-	<bean id="bankAccount"
-		class="com.nishu.bank.model.BankAccount" autowire ="byName" >
-		<!-- <property name="accountId" value=" 932737273927" /> 
-		<property name="accountHolderName" 
-			value=" Prasahant Rai" /> 
-			<property name="accountType" value=" Saving " /> 
+
+	<bean id="bankAccount" class="com.nishu.bank.model.BankAccount"
+		>
+		<!-- <property name="accountId" value=" 932737273927" /> <property name="accountHolderName" 
+			value=" Prasahant Rai" /> <property name="accountType" value=" Saving " /> 
 			<property name="accountBalance" value=" 56000 " /> -->
 
 		<constructor-arg value="932737273927" />
@@ -32,4 +23,69 @@
 		<constructor-arg value="56000" />
 	</bean>
 
+
+
+	<bean id="bankAccountService"
+		class="com.nishu.bank.service.impl.BankAccountServiceImpl"
+		>
+	</bean>
+
+	<bean id="BankAccountRepository"
+		class="com.nishu.bank.repository.impl.BankAccountRepositoryImpl"
+		>
+	</bean>
+
+
+	<bean name="bankAccountXMLConfigAspect"
+		class="com.nishu.bank.aspect.BankAccountXMLConfigAspect" />
+
+
+
+
+	<!-- Spring AOP XML Configuration -->
+	<aop:config>
+		<aop:aspect ref="bankAccountXMLConfigAspect"
+			id="bankAccountXMLConfigAspectID" order="1">
+			<aop:pointcut
+				expression="execution(* com.nishu.bank.model.BankAccount.getAccountHolderName())"
+				id="getAccountHolderNamePointcut" />
+			<aop:around method="bankAccountAroundAdvice"
+				pointcut-ref="getAccountHolderNamePointcut" arg-names="proceedingJoinPoint" />
+		</aop:aspect>
+	</aop:config>
+
+	<!-- Configure Aspect Beans, without this Aspects advices wont execute -->
+	<bean name="bankAccountAspect"
+		class="com.nishu.bank.aspect.BankAccountAspect" />
+	<bean name="bankAccountAspectPointcut"
+		class="com.nishu.bank.aspect.BankAccountAspectPointcut" />
+	<bean name="bankAccountAspectJoinPoint"
+		class="com.nishu.bank.aspect.BankAccountAspectJoinPoint" />
+	<bean name="bankAccountAfterAspect"
+		class="com.nishu.bank.aspect.BankAccountAfterAspect" />
+	<bean name="bankAccountAroundAspect"
+		class="com.nishu.bank.aspect.BankAccountAroundAspect" />
+	<bean name="bankAccountAnnotationAspect"
+		class="com.nishu.bank.aspect.BankAccountAnnotationAspect" />
+
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

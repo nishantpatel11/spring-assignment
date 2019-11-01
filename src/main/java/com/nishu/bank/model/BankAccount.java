@@ -57,6 +57,10 @@ public class BankAccount implements Serializable{
 		this.accountBalance = accountBalance;
 	}
 
+	public void throwException(){
+		throw new RuntimeException("Bank Account Exception !!!!!!!!!!!!");
+	}
+	
 	@Override
 	public String toString() {
 		return "BankAccount [accountId=" + accountId + ", accountHolderName=" + accountHolderName + ", accountType="
