@@ -1,0 +1,33 @@
+package com.nishu.bank.aspect;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+
+@Aspect
+public class BankAccountAspectPointcut {
+
+
+	@Before("getAccountHolderNamePointcut()")
+	public void loggingAdvice(){
+		System.out.println("Executing loggingAdvice on getName()");
+	}
+
+	@Before("getAccountHolderNamePointcut()")
+	public void secondAdvice(){
+		System.out.println("Executing secondAdvice on getName()");
+	}
+
+	@Pointcut("execution(public String getAccountHolderName())")
+	public void getNamePointcut(){}
+
+	@Before("allMethodsPointcut()")
+	public void allServiceMethodsAdvice(){
+		System.out.println("Before executing service method");
+	}
+
+	//Pointcut to execute on all the methods of classes in a package
+	@Pointcut("within(com.nishu.bank.service.*)")
+	public void allMethodsPointcut(){}
+
+}
