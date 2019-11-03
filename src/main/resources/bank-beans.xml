@@ -1,18 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-   	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-   	http://www.springframework.org/schema/context
-   	http://www.springframework.org/schema/context/spring-context-4.0.xsd
-   	http://www.springframework.org/schema/aop 
-	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
-
-	<context:annotation-config />
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context
+    	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
 
-	<!-- <import resource="database/Spring-Datasource.xml"/> -->
+ 	<context:annotation-config />
+<!--     <context:component-scan base-package="com.nishu.bank" /> -->
+    
+	<!-- Enable AspectJ style of Spring AOP -->
+	<aop:aspectj-autoproxy />
 	<import resource="bank/bank.xml" />
+
+
+	<!-- Configure Aspect Beans, without this Aspects advices wont execute -->
+
+	<bean name="bankAccountAspect" class="com.nishu.bank.aspect.BankAccountAspect" />
+	<bean name="bankAccountAspectPointcut" class="com.nishu.bank.aspect.BankAccountAspectPointcut" />
+	<bean name="bankAccountAspectJoinPoint" class="com.nishu.bank.aspect.BankAccountAspectJoinPoint" />
+	<bean name="bankAccountAfterAspect" class="com.nishu.bank.aspect.BankAccountAfterAspect" />
+	<bean name="bankAccountAroundAspect" class="com.nishu.bank.aspect.BankAccountAroundAspect" />
+	<bean name="bankAccountAnnotationAspect" class="com.nishu.bank.aspect.BankAccountAnnotationAspect" />
+	<bean name="bankAccountXMLConfigAspect" class="com.nishu.bank.aspect.BankAccountXMLConfigAspect" />
+
+
+	<!-- Spring AOP XML Configuration -->
+	<aop:config>
+		<aop:aspect ref="bankAccountXMLConfigAspect" id="employeeXMLConfigAspectID" order="1">
+			<aop:pointcut expression="execution(* com.nishu.bank.model.BankAccount.getAccountHolderName())" id="getNamePointcut"/>
+			<aop:around method="bankAccountAroundAdvice" pointcut-ref="getNamePointcut" arg-names="proceedingJoinPoint"/>
+		</aop:aspect>
+	</aop:config>
 
 
 </beans>

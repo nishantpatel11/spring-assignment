@@ -8,12 +8,12 @@ import org.aspectj.lang.annotation.Pointcut;
 public class BankAccountAspectPointcut {
 
 
-	@Before("getAccountHolderNamePointcut()")
+	@Before("getNamePointcut()")
 	public void loggingAdvice(){
 		System.out.println("Executing loggingAdvice on getName()");
 	}
 
-	@Before("getAccountHolderNamePointcut()")
+	@Before("getNamePointcut()")
 	public void secondAdvice(){
 		System.out.println("Executing secondAdvice on getName()");
 	}

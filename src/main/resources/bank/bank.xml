@@ -7,9 +7,6 @@
 	http://www.springframework.org/schema/aop 
 	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
-	<aop:aspectj-autoproxy />
-
-
 
 	<bean id="bankAccount" class="com.nishu.bank.model.BankAccount"
 		>
@@ -34,40 +31,6 @@
 		class="com.nishu.bank.repository.impl.BankAccountRepositoryImpl"
 		>
 	</bean>
-
-
-	<bean name="bankAccountXMLConfigAspect"
-		class="com.nishu.bank.aspect.BankAccountXMLConfigAspect" />
-
-
-
-
-	<!-- Spring AOP XML Configuration -->
-	<aop:config>
-		<aop:aspect ref="bankAccountXMLConfigAspect"
-			id="bankAccountXMLConfigAspectID" order="1">
-			<aop:pointcut
-				expression="execution(* com.nishu.bank.model.BankAccount.getAccountHolderName())"
-				id="getAccountHolderNamePointcut" />
-			<aop:around method="bankAccountAroundAdvice"
-				pointcut-ref="getAccountHolderNamePointcut" arg-names="proceedingJoinPoint" />
-		</aop:aspect>
-	</aop:config>
-
-	<!-- Configure Aspect Beans, without this Aspects advices wont execute -->
-	<bean name="bankAccountAspect"
-		class="com.nishu.bank.aspect.BankAccountAspect" />
-	<bean name="bankAccountAspectPointcut"
-		class="com.nishu.bank.aspect.BankAccountAspectPointcut" />
-	<bean name="bankAccountAspectJoinPoint"
-		class="com.nishu.bank.aspect.BankAccountAspectJoinPoint" />
-	<bean name="bankAccountAfterAspect"
-		class="com.nishu.bank.aspect.BankAccountAfterAspect" />
-	<bean name="bankAccountAroundAspect"
-		class="com.nishu.bank.aspect.BankAccountAroundAspect" />
-	<bean name="bankAccountAnnotationAspect"
-		class="com.nishu.bank.aspect.BankAccountAnnotationAspect" />
-
 </beans>
 
 
