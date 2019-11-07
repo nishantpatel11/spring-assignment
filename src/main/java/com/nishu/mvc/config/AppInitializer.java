@@ -1,4 +1,4 @@
-package com.nishu.config;
+package com.nishu.mvc.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
